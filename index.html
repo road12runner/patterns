@@ -9,23 +9,28 @@
     <!-- <script src="node_modules/es6-module-loader/dist/es6-module-loader-dev.js"></script> -->
     <!-- <script src="node_modules/systemjs/dist/system.js"></script> -->
     <script src="node_modules/material-design-lite/dist/material.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcUQKA9uONm9qeIlM6cU9AuJkQfMePslc&callback=googleMapsCallback">
+    </script>
   </head>
   <body>
       <script>
           //SystemJS.config({paths: {"jquery" : './node_modules/jquery/dist/jquery.js'}, transpiler: 'transpiler-module' });
           //System.paths['jquery'] = './node_modules/jquery/dist/jquery.js';
-          System.config({
-            map: {
-              jquery: './node_modules/jquery/dist/jquery.js'
-            }
-          });
+//          System.config({
+//            map: {
+//              jquery: './node_modules/jquery/dist/jquery.js'
+//            }
+//          });
 
 
 
           //System.import('src/app.js');
 
-          System.paths['jquery'] = './node_modules/jquery/dist/jquery.js';
-          System.import('src/app.js');          
+          function googleMapsCallback(){
+            System.paths['jquery'] = './node_modules/jquery/dist/jquery.js';
+            System.import('src/app.js');
+          }
       </script>
   </body>
 </html>

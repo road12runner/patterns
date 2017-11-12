@@ -1,8 +1,8 @@
 export class Vehicle {
-  constructor(license, model, lastLong){
+  constructor(license, model, latLong){
       this.license = license;
       this.model = model;
-      this.lastLong = lastLong
+      this.latLong = latLong
   }
   start() {
     console.log('start vehicle');

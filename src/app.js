@@ -7,7 +7,9 @@ import {FleetDataService} from './services/fleet-data-service.js';
 import $ from 'jquery';
 import {Button} from './ui/button.js';
 import {Image} from './ui/image.js';
-
+import {TitleBar} from "./ui/title-bar.js";
+import {DataTable} from "./ui/data-table.js";
+import {GoogleMap} from "./ui/google-map.js";
 
 console.log('jquery', $);
 
@@ -37,9 +39,25 @@ console.log(dataService.filterCarByMake('Ub'));
 // console.log(drone.id);
 
 
-const b = new Button('Click Me');
-b.appendElementTo($('body'));
+// const titleBar = new TitleBar('My Application');
+// titleBar.addLink('Home', '');
+// titleBar.addLink('Cars', '');
+// titleBar.addLink('Drones', '');
+// titleBar.addLink('Map', '');
+// titleBar.appendElementTo($('body'));
+//
+//
+// const b = new Button('Click Me');
+// b.appendElementTo($('body'));
+//
+//
+// const i = new Image('images/drone.jpg');
+// i.appendElementTo($('body'));
 
+// const headers = 'License Make Model Miles'.split(' ');
+// const dataTable = new DataTable(headers, dataService.cars);
+// dataTable.appendElementTo($('body'));
 
-const i = new Image('images/drone.jpg');
-i.appendElementTo($('body'));
+const centerOfMap = {lat: 40.783661, lng: -73.9655883};
+const googleMap = new GoogleMap(centerOfMap, dataService.cars);
+googleMap.appendElementTo($('body'));
