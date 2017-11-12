@@ -2,11 +2,10 @@ import {Vehicle} from  './vehicle.js';
 
 export class Drone extends Vehicle {
 
-  constructor(id, name) {
-    super(id);
-    this._id = id;
-    this._name = name;
-    console.log('drone constructor', id);
+  constructor(data) {
+    super(data.license, data.model, data.latLong);
+    this.airTimeHours = data.airTimeHours;
+    this.base = data.base;
   }
   fly() {
     console.log('Drone:' + this._id + ' is flying');

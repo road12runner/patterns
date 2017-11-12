@@ -1,8 +1,8 @@
 export class Vehicle {
-  constructor(licenseNum){
-      console.log('constructor vehicle');
-      this.licenceNum = licenseNum;
-      this.gpsEnabled = true;
+  constructor(license, model, lastLong){
+      this.license = license;
+      this.model = model;
+      this.lastLong = lastLong
   }
   start() {
     console.log('start vehicle');
