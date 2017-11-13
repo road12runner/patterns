@@ -11,16 +11,13 @@ import {TitleBar} from "./ui/title-bar.js";
 import {DataTable} from "./ui/data-table.js";
 import {GoogleMap} from "./ui/google-map.js";
 
-console.log('jquery', $);
-
-let dataService = new FleetDataService();
-dataService.loadData(fleet);
-console.log('dataService', dataService);
-
-
-console.log( dataService.getCarByLicense('AT9900'));
-console.log( dataService.getCardSortedByLicense());
-console.log(dataService.filterCarByMake('Ub'));
+import {ApplicationBase} from "./framework/application-base.js";
+import {HomePage} from "./ui/home-page.js";
+import {CarPage} from "./ui/car-page.js";
+import {MapPage} from "./ui/map-page.js";
+// console.log( dataService.getCarByLicense('AT9900'));
+// console.log( dataService.getCardSortedByLicense());
+// console.log(dataService.filterCarByMake('Ub'));
 // console.log(fleet);
 // console.log('in app.js');
 
@@ -58,6 +55,24 @@ console.log(dataService.filterCarByMake('Ub'));
 // const dataTable = new DataTable(headers, dataService.cars);
 // dataTable.appendElementTo($('body'));
 
-const centerOfMap = {lat: 40.783661, lng: -73.9655883};
-const googleMap = new GoogleMap(centerOfMap, dataService.cars);
-googleMap.appendElementTo($('body'));
+
+
+export class App extends  ApplicationBase {
+
+  constructor() {
+    super('Fleet Manager');
+    this.dataService = new FleetDataService();
+    this.dataService.loadData(fleet);
+    console.log('dataService', this.dataService);
+
+    this.addRoute('Home', new HomePage(), true);
+    this.addRoute('Cars', new CarPage());
+    this.addRoute('Drone', null);
+    this.addRoute('Map', new MapPage());
+  }
+}
+
+
+
+export const application = new App();
+application.show($('body'));
